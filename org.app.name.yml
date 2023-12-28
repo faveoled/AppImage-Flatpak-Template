@@ -1,12 +1,12 @@
-app-id: org.app.name
+app-id: TMPL_APP_ID
 runtime: org.freedesktop.Platform|org.kde.Platform|org.gnome.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk|org.gnome.Sdk|org.kde.Sdk
 base: org.example.app
 base-version: '22.08'
-command: appname
+command: TMPL_APP_NAME
 separate-locales: false
-rename-icon: appname
+rename-icon: TMPL_APP_NAME
 finish-args:
   - --persist=SOME-STORAGE
   - --persist=SOME-OTHER-STORAGE
@@ -26,39 +26,39 @@ modules:
         url: https://github.com/refi64/unappimage
         commit: d7f86f2a0d7ec3a69211125207d5f127386b849a
 
-  - name: appname
+  - name: TMPL_APP_NAME
     buildsystem: simple
     cleanup:
       - squashfs-root
     sources:
       - type: extra-data
-        url: https://example.com/Downloads/appname.AppImage
-        size: 116730498
-        sha256: e8e0063643321ce648e7087dd8eb5a967bd454558d012f4fbe4152d1ee185e19
-        filename: appname.appimage
+        url: TMPL_APPIMAGE_URL
+        size: TMPL_APPIMAGE_SIZE
+        sha256: TMPL_APPIMAGE_SHA256
+        filename: TMPL_APP_NAME.appimage
         x-checker-data:
           type: electron-updater
 
       - type: script
-        dest-filename: appname
+        dest-filename: TMPL_APP_NAME
         commands:
           - exec zypak-wrapper /app/extra/bin/launcher --no-sandbox "$0"
 
       - type: file
-        path: org.app.name.appdata.xml
+        path: TMPL_APP_ID.appdata.xml
 
       - type: file
-        path: org.app.name.desktop
+        path: TMPL_APP_ID.desktop
 
       - type: file
         path: apply_extra.sh
 
       - type: file
-        path: icons/appname.png
+        path: icons/TMPL_APP_NAME.png
 
     build-commands:
       - install -D ./apply_extra.sh "${FLATPAK_DEST}/bin/apply_extra"
-      - install lunarclient "${FLATPAK_DEST}/bin/"
-      - install -Dm644 org.app.name.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
-      - install -Dm644 org.app.name.appdata.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml"
-      - install  -Dm644 -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps appname.png
+      - install TMPL_APP_NAME "${FLATPAK_DEST}/bin/"
+      - install -Dm644 TMPL_APP_ID.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+      - install -Dm644 TMPL_APP_ID.appdata.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml"
+      - install  -Dm644 -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps TMPL_APP_NAME.png
