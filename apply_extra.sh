@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_IMAGE="/app/extra/lunar-client.appimage"
+APP_IMAGE="/app/extra/TMPL_APP_NAME.appimage"
 
 # Allow image to execute
 
@@ -28,7 +28,7 @@ iconSizes=("16" "32" "48" "64" "128" "256")
 for I in "${iconSizes[@]}"
 do
 	dir="$ICON_DIR/${I}x${I}/apps/"
-	mv "$dir/launcher.png" "$dir/com.lunarclient.LunarClient.png"
+	mv "$dir/*.png" "$dir/TMPL_APP_ID.png"
 done
 
 # Clean up
