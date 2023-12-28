@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=TMPL_APP_NAME
 Comment=TMPL_APP_NAME description
-Exec=appname
+Exec=TMPL_APP_NAME
 Terminal=false
 Type=Application
 Icon=TMPL_APP_ID
