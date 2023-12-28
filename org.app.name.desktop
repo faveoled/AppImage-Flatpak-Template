@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=App Name
-Comment=App Description
+Name=TMPL_APP_NAME
+Comment=TMPL_APP_NAME description
 Exec=appname
 Terminal=false
 Type=Application
-Icon=org.app.name
-StartupWMClass=appname
+Icon=TMPL_APP_ID
+StartupWMClass=TMPL_APP_NAME
 Categories=Game;
