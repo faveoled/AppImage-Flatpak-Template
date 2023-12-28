@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
 
-	<id>org.app.name</id>
+	<id>TMPL_APP_ID</id>
 
 	<metadata_license>LICENSE</metadata_license>
 
-	<name>App Name</name>
+	<name>TMPL_APP_NAME</name>
 
-	<summary>App Summary</summary>
+	<summary>TMPL_APP_ID summary</summary>
 
 	<description>
 		<p>This is the Apps description.
@@ -22,7 +22,7 @@
 	<url type="help">https://help.example.com</url>
 	<url type="faq">https://example.com/faq</url>
 
-	<launchable type="desktop-id">org.desktop</launchable>
+	<launchable type="desktop-id">TMPL_APP_ID.desktop</launchable>
 
 	<releases>
 		<release version="1.0.1" date="2023-01-03"/>
