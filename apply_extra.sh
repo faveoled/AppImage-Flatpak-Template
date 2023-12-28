@@ -21,15 +21,17 @@ cp -r squashfs-root/* $DEST
 ICON_DIR="/app/extra/export/share/icons/hicolor/"
 
 mkdir -p $ICON_DIR
-cp -r squashfs-root/usr/share/icons/hicolor/* $ICON_DIR
+if test -f "squashfs-root/usr/share/icons/hicolor/"; then
 
-iconSizes=("16" "32" "48" "64" "128" "256")
-
-for I in "${iconSizes[@]}"
-do
-	dir="$ICON_DIR/${I}x${I}/apps/"
-	mv "$dir/*.png" "$dir/TMPL_APP_ID.png"
-done
+	cp -r squashfs-root/usr/share/icons/hicolor/* $ICON_DIR
+	
+	iconSizes=("16" "32" "48" "64" "128" "256")
+	
+	for I in "${iconSizes[@]}"
+	do
+		dir="$ICON_DIR/${I}x${I}/apps/"
+	done
+fi
 
 # Clean up
 rm -rf squashfs-root/
