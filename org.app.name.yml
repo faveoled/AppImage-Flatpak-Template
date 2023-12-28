@@ -61,4 +61,4 @@ modules:
       - install TMPL_APP_NAME "${FLATPAK_DEST}/bin/"
       - install -Dm644 TMPL_APP_ID.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
       - install -Dm644 TMPL_APP_ID.appdata.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml"
-      - install -Dm644 -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps TMPL_APP_NAME.png
+      - install -Dm644 -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/TMPL_APP_NAME.png
