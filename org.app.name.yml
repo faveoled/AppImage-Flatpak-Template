@@ -40,7 +40,7 @@ modules:
           type: electron-updater
 
       - type: script
-        dest-filename: SocNetV
+        dest-filename: TMPL_APP_NAME
         commands:
           - exec /app/extra/bin/AppRun "$0"
 
