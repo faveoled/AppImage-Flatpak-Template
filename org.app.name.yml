@@ -1,6 +1,6 @@
 app-id: TMPL_APP_ID
 runtime: TMPL_RUNTIME
-runtime-version: TMPL_RUNTIME_VERSION
+runtime-version: 'TMPL_RUNTIME_VERSION'
 sdk: TMPL_SDK
 command: TMPL_APP_NAME
 separate-locales: false
