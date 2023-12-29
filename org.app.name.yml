@@ -1,9 +1,7 @@
 app-id: TMPL_APP_ID
-runtime: org.freedesktop.Platform|org.kde.Platform|org.gnome.Platform
-runtime-version: '23.08'
-sdk: org.freedesktop.Sdk|org.gnome.Sdk|org.kde.Sdk
-base: org.example.app
-base-version: '22.08'
+runtime: TMPL_RUNTIME
+runtime-version: TMPL_RUNTIME_VERSION
+sdk: TMPL_SDK
 command: TMPL_APP_NAME
 separate-locales: false
 rename-icon: TMPL_APP_NAME
