@@ -1,6 +1,8 @@
 app-id: TMPL_APP_ID
 runtime: TMPL_RUNTIME
 runtime-version: 'TMPL_RUNTIME_VERSION'
+#base: org.electronjs.Electron2.BaseApp
+#base-version: '23.08'
 sdk: TMPL_SDK
 command: TMPL_APP_NAME
 separate-locales: false
@@ -26,21 +28,33 @@ modules:
 
   - name: TMPL_APP_NAME
     buildsystem: simple
+    build-commands:
+      - unappimage ./App.AppImage
+      - mv squashfs-root AppImage
+
+      - mkdir -p /app/share/icons/hicolor/512x512/apps
+      - mkdir -p /app/share/applications
+
+      - install -Dm644 TMPL_APP_ID.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+      - install -Dm644 TMPL_APP_ID.appdata.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml"
+      - install -Dm644 -t ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps TMPL_APP_NAME.png
+
+      - mv AppImage /app/
+      - install -Dm755 TMPL_APP_NAME "${FLATPAK_DEST}/bin/"
     cleanup:
-      - squashfs-root
+      - AppImage
+
     sources:
-      - type: extra-data
+      - type: file
         url: TMPL_APPIMAGE_URL
         size: TMPL_APPIMAGE_SIZE
         sha256: TMPL_APPIMAGE_SHA256
-        filename: TMPL_APP_NAME.appimage
-        x-checker-data:
-          type: electron-updater
+        dest-filename: App.AppImage
 
       - type: script
         dest-filename: TMPL_APP_NAME
         commands:
-          - exec /app/extra/bin/AppRun "$0"
+          - exec /app/bundle/AppRun "$0"
 
       - type: file
         path: TMPL_APP_ID.appdata.xml
@@ -49,14 +63,4 @@ modules:
         path: TMPL_APP_ID.desktop
 
       - type: file
-        path: apply_extra.sh
-
-      - type: file
         path: icons/TMPL_APP_NAME.png
-
-    build-commands:
-      - install -D ./apply_extra.sh "${FLATPAK_DEST}/bin/apply_extra"
-      - install TMPL_APP_NAME "${FLATPAK_DEST}/bin/"
-      - install -Dm644 TMPL_APP_ID.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
-      - install -Dm644 TMPL_APP_ID.appdata.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.appdata.xml"
-      - install -Dm644 -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps TMPL_APP_NAME.png
