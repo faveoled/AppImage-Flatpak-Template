@@ -3,7 +3,7 @@
 
 	<id>TMPL_APP_ID</id>
 
-        <metadata_license>CC0-1.0</metadata_license>
+	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>LicenseRef-proprietary</project_license>
 
 	<name>TMPL_APP_NAME</name>
