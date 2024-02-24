@@ -54,7 +54,7 @@ modules:
       - type: script
         dest-filename: TMPL_APP_NAME
         commands:
-          - exec /app/bundle/AppRun "$0"
+          - exec /app/bundle/AppRun
 
       - type: file
         path: TMPL_APP_ID.appdata.xml
